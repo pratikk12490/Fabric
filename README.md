@@ -2,8 +2,11 @@
 
 *AI-powered data conversations made simple* ✨
 
-## 📁 Project Structure
+## 📁 P## 🔧 **Tweak everything**: Open source = unlimited customization power
 
+---
+
+*Built with ❤️ and lots of ☕ for the modern data scientist*
 Everything you need to chat with your Microsoft Fabric Data Agent:
 
 ```
