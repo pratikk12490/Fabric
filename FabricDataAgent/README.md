@@ -52,10 +52,44 @@ set FABRIC_DATA_AGENT_URL=https://api.fabric.microsoft.com/v1/workspaces/YOUR_WO
 ```
 
 ### 4. Authentication
-Authenticate using Azure CLI:
+
+The application supports multiple authentication methods through Azure DefaultAzureCredential:
+
+**Option 1: Azure CLI (Interactive)**
 ```bash
 az login
 ```
+
+**Option 2: Service Principal (Automated/Production)**
+
+Set these environment variables for Service Principal authentication:
+```bash
+# PowerShell
+$env:AZURE_CLIENT_ID = "your-application-id"
+$env:AZURE_CLIENT_SECRET = "your-client-secret"  
+$env:AZURE_TENANT_ID = "your-tenant-id"
+
+# Command Prompt
+set AZURE_CLIENT_ID=your-application-id
+set AZURE_CLIENT_SECRET=your-client-secret
+set AZURE_TENANT_ID=your-tenant-id
+```
+
+**Option 3: Environment File (.env)**
+
+Add to your `.env` file:
+```
+AZURE_CLIENT_ID=your-application-id
+AZURE_CLIENT_SECRET=your-client-secret
+AZURE_TENANT_ID=your-tenant-id
+```
+
+**How to get Service Principal details:**
+1. Azure Portal → Azure Active Directory → App registrations
+2. Create or select your application
+3. Get Application (client) ID → `AZURE_CLIENT_ID`
+4. Get Directory (tenant) ID → `AZURE_TENANT_ID`
+5. Create new client secret → `AZURE_CLIENT_SECRET`
 
 ### 5. Run Tests
 ```bash
@@ -80,6 +114,11 @@ Copy `.env.example` to `.env` and update with your values:
 ```
 FABRIC_DATA_AGENT_URL=your-fabric-endpoint-url
 FABRIC_TEST_QUESTION=What datasources do you have access to?
+
+# Optional: Service Principal Authentication
+AZURE_CLIENT_ID=your-application-id
+AZURE_CLIENT_SECRET=your-client-secret
+AZURE_TENANT_ID=your-tenant-id
 ```
 
 ## Requirements
